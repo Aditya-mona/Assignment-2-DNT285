@@ -1,0 +1,43 @@
+﻿@model DapperCore.Model.Book
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+
+            <div class="form-group">
+                <input asp-for="BookId" type="hidden" />
+            </div>
+            <div class="form-group">
+                <label asp-for="BookTitle" class="control-label"></label>
+                <input asp-for="BookTitle" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="BookAuthor" class="control-label"></label>
+                <input asp-for="BookAuthor" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="BookLanguageId" class="control-label"></label>
+                @Html.DropDownListFor(x => x.BookLanguageId, new SelectList(ViewBag.Languges, "LanguageId", "LanguageName"), "Select Language", new { @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

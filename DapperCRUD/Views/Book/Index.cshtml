@@ -1,0 +1,49 @@
+﻿@model IEnumerable<BookViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                Book Title
+            </th>
+            <th>
+                Book Author
+            </th>
+            <th>
+                Language
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.BookTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookAuthor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookLangugeName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id= item.BookId}) |
+               
+                @Html.ActionLink("Delete", "Delete", new { id=item.BookId })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
